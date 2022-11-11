@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ab35c4c-da52-4e59-8129-94a937a119f0">
+	<property name="ireport.zoom" value="1.2100000000000029"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="7096ad70-87f9-4b25-9395-78df4bfb2948"/>
+	<queryString language="SQL">
+		<![CDATA[select * from venta;]]>
+	</queryString>
+	<field name="Codigo_factura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_factu" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Forma_pago" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Valido_hasta" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="334" y="466" width="149" height="18" uuid="40f99da9-cc3a-4548-b61e-3bbc669413c4"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Valido_hasta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="334" y="237" width="149" height="18" uuid="aa967534-5804-4ddd-9088-e75bcd9ca3ac"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_factu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" mode="Transparent" x="279" y="591" width="108" height="31" forecolor="#006666" uuid="d72dc3cc-0e7e-4731-a56f-4fd13a7a298f"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="20" isBold="true" pdfFontName="Times-Italic"/>
+				</textElement>
+				<text><![CDATA[Total......]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="334" y="119" width="116" height="18" uuid="5d6ba5e8-ff24-4638-953d-aed29ef8dd29"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Codigo_factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" mode="Transparent" x="59" y="351" width="168" height="31" forecolor="#006666" uuid="218e9959-656b-4353-b013-2131b6cf236f"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="20" isBold="true" pdfFontName="Times-Italic"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" mode="Transparent" x="59" y="466" width="168" height="31" forecolor="#006666" uuid="7448fe10-e937-4d89-90dd-2198642ce87f"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="20" isBold="true" pdfFontName="Times-Italic"/>
+				</textElement>
+				<text><![CDATA[Valido hasta]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="334" y="351" width="149" height="18" uuid="0809fee7-1847-48f2-bc26-1aa633b422ea"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Forma_pago}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="396" y="591" width="95" height="19" uuid="eea905f5-8fd5-4ab5-872d-77c65eb5f707"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" mode="Transparent" x="59" y="237" width="168" height="31" forecolor="#006666" uuid="6323d90b-8758-4bc0-9744-784d5c849044"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="20" isBold="true" pdfFontName="Times-Italic"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" mode="Transparent" x="59" y="119" width="168" height="31" forecolor="#006666" uuid="cd1a2ad3-3c59-42aa-b411-542fe52ac389"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="20" isBold="true" pdfFontName="Times-Italic"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+		</band>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="597" height="65" forecolor="#CCCCFF" backcolor="#CCCCFF" uuid="b0cc5ab9-90ef-43ee-88f7-6f25478043a4"/>
+				<staticText>
+					<reportElement style="Title" x="156" y="0" width="297" height="65" forecolor="#006666" backcolor="#FFFFFF" uuid="b248835f-4123-48e2-9f1b-33654b7689be"/>
+					<textElement textAlignment="Right">
+						<font fontName="Cooper Black" size="54" isBold="false"/>
+					</textElement>
+					<text><![CDATA[FACTURA]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<frame>
+				<reportElement x="227" y="0" width="328" height="20" uuid="38516266-6994-4883-b463-14bda58ee77c"/>
+			</frame>
+			<frame>
+				<reportElement x="178" y="20" width="328" height="20" uuid="06c4642a-e4f6-437d-9ba9-cbc90afcc7ec"/>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="6c36462a-eaa5-4c49-a90c-6e88cc6ec0f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="13" forecolor="#CCCCFF" backcolor="#CCCCFF" uuid="314cac11-1439-4f44-a4dc-6737f96d4760"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="506" y="0" width="40" height="13" forecolor="#006666" uuid="ee8036c3-72de-4eb3-8ced-c1a59f64ef6f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="411" y="0" width="80" height="13" forecolor="#006666" uuid="4468d6cd-d5f5-4a89-a6c4-985c0a2d04c9"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#006666" uuid="ea075660-8c08-43b3-b802-1d4c830cfda9"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

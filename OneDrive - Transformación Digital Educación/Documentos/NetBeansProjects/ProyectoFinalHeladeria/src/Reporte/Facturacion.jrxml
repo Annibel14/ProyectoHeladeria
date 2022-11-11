@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="742" pageHeight="495" orientation="Landscape" columnWidth="702" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2ddccb13-83c1-4048-bedf-0125c19809bd">
+	<property name="ireport.zoom" value="1.6105100000000105"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NoFactura" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     detalle_factura.`id_factura` AS detalle_factura_id_factura,
+     detalle_factura.`id_producto` AS detalle_factura_id_producto,
+     detalle_factura.`cantidad_vendida` AS detalle_factura_cantidad_vendida,
+     detalle_factura.`importe` AS detalle_factura_importe,
+     facturacion.`NoFactura` AS factura_no_factura,
+     facturacion.`NombreCliente` AS factura_nombre_cliente,
+     facturacion.`Cajera` AS factura_cajera,
+     facturacion.`FormaPago` AS factura_tipo_pago,
+     facturacion.`Total` AS factura_Total,
+     facturacion.`Fecha_factura` AS fecha_factura,
+     producto.`Codigo_producto` AS producto_id_producto,
+     producto.`Producto` AS producto_nombre_producto,
+     
+     producto.`Precio` AS producto_unidad_precio
+    
+FROM
+    facturacion
+     INNER JOIN `detalle_factura` AS detalle_factura ON facturacion.`NoFactura` =  detalle_factura.`id_factura`
+     INNER JOIN `producto` AS producto ON detalle_factura.`id_producto` = producto.`Codigo_producto`
+     where NoFactura = $P{NoFactura}]]>
+	</queryString>
+	<field name="detalle_factura_id_factura" class="java.lang.Integer"/>
+	<field name="detalle_factura_id_producto" class="java.lang.Integer"/>
+	<field name="detalle_factura_cantidad_vendida" class="java.lang.Integer"/>
+	<field name="detalle_factura_importe" class="java.lang.Integer"/>
+	<field name="factura_no_factura" class="java.lang.Integer"/>
+	<field name="factura_nombre_cliente" class="java.lang.String"/>
+	<field name="factura_cajera" class="java.lang.String"/>
+	<field name="factura_tipo_pago" class="java.lang.String"/>
+	<field name="factura_Total" class="java.lang.Float"/>
+	<field name="fecha_factura" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="producto_id_producto" class="java.lang.Integer"/>
+	<field name="producto_nombre_producto" class="java.lang.String"/>
+	<field name="producto_unidad_precio" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<image>
+				<reportElement x="84" y="-8" width="226" height="81" uuid="307bf6d3-6ee7-41ab-993c-8b1370c24c5c"/>
+				<imageExpression><![CDATA["C:\\Users\\A19B47948\\OneDrive - Transformación Digital Educación\\Documentos\\NetBeansProjects\\ProyectoFinalHeladeria\\src\\Imagenes\\TSLogo.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="84" y="51" width="200" height="22" uuid="51775950-afeb-46da-a387-d4bd65c46e07"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Helados adictivos es lo que hacemos!!]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="460" y="11" width="198" height="70" uuid="c400bac3-6397-48e3-9f0e-312f0d3e3662"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="474" y="24" width="66" height="14" uuid="f69cf45a-b0ac-4ea8-8072-453e233ad7ad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contactos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="59" width="84" height="14" uuid="ee096e9a-5e72-4d61-b179-171dbbad19f5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Redes sociales:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="24" width="67" height="14" uuid="27786bb6-fe0d-4a8a-8b30-f7a1e72642e7"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[829-606-7723]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="59" width="100" height="14" uuid="2a619092-f56f-4d71-b9c8-07f5baaaaf2b"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[@heladeriatropicalsweet]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="0" width="82" height="27" uuid="8f3d99cf-4d5c-4b38-9814-680572b4231a"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Factura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="183" y="0" width="127" height="27" uuid="40166f66-bb42-4fab-b657-8275bcf38cda"/>
+				<textFieldExpression><![CDATA[$F{factura_no_factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="0" width="66" height="27" uuid="60523fb7-cc19-44d2-8634-24f12bc4860b"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="414" y="0" width="99" height="27" uuid="afd09d02-7141-47ee-8d4e-02a6aad11838"/>
+				<textFieldExpression><![CDATA[$F{factura_nombre_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="348" y="0" width="82" height="27" uuid="e9167245-dac8-4287-9aa0-5dfa1de30787"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atendido por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="437" y="0" width="90" height="27" uuid="ed336c12-6005-418c-9b31-cd9e0d159dd2"/>
+				<textFieldExpression><![CDATA[$F{factura_cajera}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="84" y="0" width="82" height="27" uuid="2529bd32-4d1a-4109-8f7d-75a99c494b7d"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="183" y="0" width="100" height="27" uuid="f8f0abce-c9ac-4ae3-9fbb-0e018f497f27"/>
+				<textFieldExpression><![CDATA[$F{fecha_factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="56" width="121" height="27" uuid="f3516773-e65c-41ab-8861-92cee4520632"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código del producto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="56" width="97" height="27" uuid="747cd788-2f6a-49f7-b835-07ef300b4991"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="56" width="82" height="27" uuid="92cef2d2-6114-4e10-810a-bce726e60ed9"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="56" width="82" height="27" uuid="543eb3e3-140f-4765-a561-c1cdafc512b4"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="56" width="82" height="27" uuid="7bfc3f39-de0e-4506-ad10-1da617981295"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio C/U:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="43" width="702" height="1" uuid="7522e7d0-6986-4ee2-a153-8430b5f7c0a9"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="166" y="0" width="182" height="27" uuid="943e71d4-494c-4e96-bf16-03a098a87e75"/>
+				<textFieldExpression><![CDATA[$F{producto_nombre_producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="0" width="78" height="27" uuid="04d212c2-4683-406b-b0c3-4048791a7f9e"/>
+				<textFieldExpression><![CDATA[$F{detalle_factura_cantidad_vendida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="576" y="0" width="126" height="27" uuid="5a930180-c554-4394-85c6-e81ba8946070"/>
+				<textFieldExpression><![CDATA[$F{detalle_factura_importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="28" y="0" width="121" height="27" uuid="482e4aa4-3591-40fa-9c84-77018a2f808f"/>
+				<textFieldExpression><![CDATA[$F{detalle_factura_id_producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="0" width="80" height="27" uuid="c2743b0a-9a6f-4eeb-a4d1-6e36410affb7"/>
+				<textFieldExpression><![CDATA[$F{producto_unidad_precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="51" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="80" y="47" width="383" height="0" uuid="f5c8c009-840c-48b4-b1d7-e86092d3a32a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="485" y="24" width="95" height="27" uuid="1d6ccb3a-fd06-4607-a088-35d273bc5c7c"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total a pagar....]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="580" y="24" width="102" height="27" uuid="2c5af730-3e78-4fc6-a407-738305c45202"/>
+				<textFieldExpression><![CDATA[$F{factura_Total}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="29" width="100" height="1" uuid="2d713be8-c50c-4424-b833-cba109ddcdc4"/>
+			</break>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="272" y="26" width="168" height="20" uuid="491b3e0c-f200-4dcb-b06d-356605b3d29b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Gracias por preferirnos!!!]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
